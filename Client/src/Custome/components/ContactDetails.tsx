@@ -22,7 +22,7 @@ const ContactDetails = ({
   onchange,
 }: ContactDetailsProps) => {
   return (
-    <div className="flex flex-col gap-2 text-gray-700">
+    <div className="flex flex-col w-full gap-2 text-gray-700">
       <Label htmlFor={name} className="text-lg capitalize">
         {user_info}
       </Label>
@@ -30,7 +30,7 @@ const ContactDetails = ({
       {type === "textarea" ? (
         <div>
           <p className="text-sm text-gray-500">
-            {value.trim().split(/\s+/).length} / 25 words
+            {value.trim().split(/\s+/).filter(Boolean).length} / 25 words
           </p>
 
           <Textarea
@@ -39,7 +39,7 @@ const ContactDetails = ({
             placeholder={placeholder}
             value={value}
             onChange={onchange}
-            className="md:text-xl text-lg text-gray-900 font-Noto  md:h-32 h-20"
+            className="md:text-xl text-lg text-gray-900 font-Noto  md:h-32 h-20 w-full "
           />
         </div>
       ) : (

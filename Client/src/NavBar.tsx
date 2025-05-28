@@ -1,15 +1,23 @@
+// NavBar.tsx
 import { Link } from "react-router-dom";
 import AddContact from "./Custome/components/AddContact";
 import { Contact } from "lucide-react";
 import ProfileDetails from "./Custome/components/ProfileDetails";
 
+interface NavBarProps {
+  onAddContact: (contact: {
+    name: string;
+    email: string;
+    description: string;
+    number: string;
+  }) => void;
+}
+
 const ProjectsRoutes = {
   Home: "/",
-  //   signUp: "/register/sign-up",
-  //   signIn: "/welcome-back/sign-in",
 };
 
-const NavBar = () => {
+const NavBar = ({ onAddContact }: NavBarProps) => {
   const pages = Object.entries(ProjectsRoutes).map(([key, path]) => (
     <li key={key} className="md:text-xl font-medium text-lg capitalize">
       <Link to={path}>{key}</Link>
@@ -24,7 +32,7 @@ const NavBar = () => {
       </div>
 
       <div className="flex justify-between items-center gap-5">
-        <AddContact />
+        <AddContact onAddContact={onAddContact} />
         <ul>{pages}</ul>
 
         <ProfileDetails />

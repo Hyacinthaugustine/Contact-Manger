@@ -16,7 +16,7 @@ const CrudButtons = () => {
   const btns = buttonText.map((btn, index) => (
     <Button
       key={index}
-      className={`p-5 text-lg font-semibold text-white flex-1 ${
+      className={`p-3 text-lg font-semibold text-white flex-1 ${
         colorClasses[btn.color]
       }`}
     >
