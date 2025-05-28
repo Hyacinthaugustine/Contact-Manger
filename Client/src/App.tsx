@@ -1,17 +1,30 @@
+// App.tsx
+import { useState } from "react";
 import ReadyContact from "./Custome/components/ReadyContact";
 import NavBar from "./NavBar";
 
+interface Contact {
+  name: string;
+  email: string;
+  description: string;
+  number: string;
+}
+
 const App = () => {
+  const [contacts, setContacts] = useState<Contact[]>([]);
+
+  const handleAddContact = (newContact: Contact) => {
+    setContacts((prevContacts) => [newContact, ...prevContacts]);
+  };
+
   return (
-    <div className="bg-beige max-w-8xl w-full mx-auto pb-3 text-lg px-6  min:h-dvh">
-      <NavBar />
+    <div className="bg-beige max-w-8xl w-full mx-auto pb-3 text-lg px-6 min:h-dvh">
+      <NavBar onAddContact={handleAddContact} />
 
       <div className="flex flex-col gap-2 mx-7 mt-4 w-full max-w-4xl">
-        {/* show all added text inside this contatiner form new to old */}
-
-        <ReadyContact />
-        <ReadyContact />
-        <ReadyContact />
+        {contacts.map((contact, index) => (
+          <ReadyContact key={index} contact={contact} />
+        ))}
       </div>
     </div>
   );
