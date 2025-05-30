@@ -1,4 +1,3 @@
-// NavBar.tsx
 import { Link } from "react-router-dom";
 import AddContact from "./Custome/components/AddContact";
 import { Contact } from "lucide-react";
