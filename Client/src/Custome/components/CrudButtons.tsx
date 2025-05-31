@@ -15,7 +15,7 @@ const CrudButtons = () => {
     <div>
       <Button
         key={index}
-        className={`p-5 text-lg font-semibold w-full text-white flex-1 ${
+        className={`p-6 md:text-lg text-sm font-semibold w-full text-white ${
           colorClasses[btn.color]
         }`}
       >
@@ -25,7 +25,7 @@ const CrudButtons = () => {
   ));
 
   return (
-    <div className="flex justify-start flex-col gap-2 w-full md:max-w-[200px]">
+    <div className="flex justify-start md:flex-col gap-2 w-full md:max-w-[200px]">
       {btns}
     </div>
   );

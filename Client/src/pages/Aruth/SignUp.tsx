@@ -1,7 +1,7 @@
 import SignUpImage from "../../assets/Sign-up-2.jpg";
 import SignUpForm from "@/Custome/components/SignUpForm";
 
-const SignIn = () => {
+const SignUp = () => {
   return (
     <div className="grid min-h-svh lg:grid-cols-2 font-Noto">
       <div className="relative hidden bg-muted lg:block">
@@ -23,4 +23,4 @@ const SignIn = () => {
   );
 };
 
-export default SignIn;
+export default SignUp;

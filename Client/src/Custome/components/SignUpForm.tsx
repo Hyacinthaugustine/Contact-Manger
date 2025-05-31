@@ -48,7 +48,10 @@ const SignUpForm = ({ className, ...props }: React.ComponentProps<"form">) => {
       </div>
       <div className="text-center text-sm">
         Don&apos;t have an account?{" "}
-        <Link to="/welcome/sign-in" className="underline underline-offset-4">
+        <Link
+          to="/welcome/sign-in"
+          className="underline underline-offset-4 capitalize"
+        >
           Sign In
         </Link>
       </div>

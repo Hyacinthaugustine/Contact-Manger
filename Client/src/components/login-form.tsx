@@ -47,8 +47,8 @@ export function LoginForm({
             Or continue with
           </span>
         </div>
-        <Button variant="outline" className="w-full">
-          <FcGoogle />
+        <Button variant="outline" className="w-full p-7">
+          <FcGoogle className="md:size-8 size-6" />
           Login with Google
         </Button>
       </div>
@@ -56,7 +56,7 @@ export function LoginForm({
         Don&apos;t have an account?{" "}
         <Link
           to="/welcome/register/sign-up"
-          className="underline underline-offset-4"
+          className="underline underline-offset-4n capitalize"
         >
           Sign up
         </Link>

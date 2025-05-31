@@ -106,7 +106,7 @@ const AddContact = ({ onAddContact }: AddContactProps) => {
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
-        <Button className="bg-orange text-white text-lg tracking-wide font-semibold p-5">
+        <Button className="bg-slate-700 hover:bg-slate-800 text-white md:text-lg text-sm tracking-wide font-semibold md:p-6 p-4">
           Add Contact
         </Button>
       </DialogTrigger>
@@ -169,7 +169,7 @@ const AddContact = ({ onAddContact }: AddContactProps) => {
           <Button
             onClick={handleSubmit}
             type="submit"
-            className="w-[25%] p-6 uppercase bg-amber-700 hover:bg-amber-800 transition-all delay-300 text-white"
+            className="md:w-[25%] w-full p-6 uppercase bg-amber-700 hover:bg-amber-800 transition-all delay-300 text-white"
           >
             Add
           </Button>
