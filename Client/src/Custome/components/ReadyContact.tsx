@@ -13,16 +13,19 @@ interface ReadyContactProps {
 
 const ReadyContact = ({ contact }: ReadyContactProps) => {
   return (
-    <div className="w-full bg-gray-300 rounded-lg px-6 py-4 flex justify-between flex-row-reverse gap-4">
-      <CrudButtons />
-
-      <div className="flex flex-col gap-3 w-full">
-        <p className="capitalize text-xl font-Noto">{contact.name}</p>
-        <p className="text-lg font-Merriweather">{contact.number}</p>{" "}
-        <div className="text-lg font-Merriweather">{contact.email}</div>
-        <div className="tetx-lg font-Merriweather bg-gray-200 p-2 rounded first-letter:capitalize">
-          {contact.description}
+    <div className="w-full bg-slate-700 text-slate-100 rounded-lg px-6 py-4 flex flex-col justify-between gap-4 md:text-lg text-sm">
+      <div className="flex justify-between md:flex-row-reverse flex-col gap-3 w-full">
+        <CrudButtons />
+        <div className="flex flex-col justify-between">
+          <p className="capitalize font-Noto">Name: {contact.name}</p>
+          <p className="font-Merriweather">phone Number: {contact.number}</p>
+          <div className="font-Merriweather">
+            Email Address: {contact.email}
+          </div>
         </div>
+      </div>
+      <div className="font-Merriweather bg-gray-100 p-2 text-gray-800 rounded first-letter:capitalize">
+        {contact.description}
       </div>
     </div>
   );

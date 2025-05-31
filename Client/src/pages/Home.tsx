@@ -17,10 +17,10 @@ const Home = () => {
   };
 
   return (
-    <div className="bg-beige max-w-8xl w-full mx-auto pb-3 text-lg px-6 min:h-dvh">
+    <div className="md:max-w-[1260] w-full mx-auto pb-3 text-sm md:text-lg md:px-6 px-2 min:h-svh max-h-full">
       <NavBar onAddContact={handleAddContact} />
 
-      <div className="flex flex-col gap-2 mx-7 mt-4 w-full max-w-4xl">
+      <div className="flex flex-col gap-3 md:mx-7 mt-3 md:mt-4 w-full max-w-4xl">
         {contacts.map((contact, index) => (
           <ReadyContact key={index} contact={contact} />
         ))}
