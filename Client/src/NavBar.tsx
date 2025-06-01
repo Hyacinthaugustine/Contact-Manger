@@ -18,7 +18,7 @@ interface NavBarProps {
 }
 
 const ProjectsRoutes = {
-  Home: "/",
+  Home: "/home",
 };
 
 const NavBar = ({ onAddContact }: NavBarProps) => {
@@ -44,9 +44,9 @@ const NavBar = ({ onAddContact }: NavBarProps) => {
     <div className="flex justify-between items-center gap-5 border-b-2 border-b-slate-800 md:px-6 md:py-3 relative py-2 px-2">
       <Link
         to="/"
-        className="font-Noto flex  items-center gap-1 md:px-2 py-1 md:text-2xl text-lg font-bold"
+        className="font-Noto flex  items-center gap-1 md:px-2 py-1 md:text-3xl text-lg font-bold"
       >
-        <Contact className="md:size-6  size-5" />
+        <Contact className="md:size-8 size-5" />
         CM
       </Link>
 
