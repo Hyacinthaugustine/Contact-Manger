@@ -2,7 +2,8 @@ const dotenv = require("dotenv");
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
-const UserModel = require("./Models/usersModel"); // or ./Models/UserModel
+const UserModel = require("./Models/usersModel");
+const ConctactModel = require("./Models/ContactDetailModel");
 
 dotenv.config();
 
@@ -19,14 +20,14 @@ mongoose
   .catch(console.error);
 
 // login
-app.post("/", (req: express.Request, res: Expression.Response) => {
+app.post("/", (req: express.Request, res: express.Response) => {
   const { email, password } = req.body;
-  UserModel.findOne({ email: email }).then((user) => {
+  UserModel.findOne({ email: email }).then((user: any) => {
     if (user) {
-      if (user.password == password) {
+      if (user.password === password) {
         res.json("Success");
       } else {
-        res.json("passowrd isnt corrrect");
+        res.json("password isn't correct");
       }
     } else {
       res.json("No record found");
@@ -37,9 +38,19 @@ app.post("/", (req: express.Request, res: Expression.Response) => {
 // sign up
 app.post("/users", async (req: express.Request, res: express.Response) => {
   UserModel.create(req.body)
-    .then((UserModel) => res.json(UserModel))
-    .catch((error) => res.json(error));
+    .then((user: any) => res.json(user))
+    .catch((error: any) => res.json(error));
 });
+
+// contact details
+app.post(
+  "/contact-details",
+  async (req: express.Request, res: express.Response) => {
+    ConctactModel.create(req.body)
+      .then((contact: any) => res.json(contact))
+      .catch((error: any) => res.json(error));
+  }
+);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

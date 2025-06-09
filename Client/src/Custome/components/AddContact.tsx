@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/dialog";
 import ContactDetails from "./ContactDetails";
 import InputError from "./InputError";
+import axios from "axios";
 
 interface AddContactProps {
   onAddContact: (contact: {
@@ -92,6 +93,13 @@ const AddContact = ({ onAddContact }: AddContactProps) => {
     };
 
     onAddContact(cleanedContact);
+
+    axios
+      .post("http://localhost:2003/contact-details", cleanedContact)
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((err) => console.log(err));
 
     setContact({
       name: "",
