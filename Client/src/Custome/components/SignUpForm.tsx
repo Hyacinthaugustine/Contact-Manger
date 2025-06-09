@@ -16,7 +16,6 @@ const SignUpForm = ({ className, ...props }: React.ComponentProps<"form">) => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Send form data to backend here
     axios
       .post("http://localhost:2003/users", { name, email, password })
       .then((result) => {

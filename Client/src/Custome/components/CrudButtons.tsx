@@ -12,16 +12,14 @@ const CrudButtons = () => {
   };
 
   const btns = buttonText.map((btn, index) => (
-    <div>
-      <Button
-        key={index}
-        className={`p-6 md:text-lg text-sm font-semibold w-full text-white ${
-          colorClasses[btn.color]
-        }`}
-      >
-        {btn.text}
-      </Button>
-    </div>
+    <Button
+      key={index}
+      className={`p-6 md:text-lg text-sm font-semibold w-full text-white ${
+        colorClasses[btn.color]
+      }`}
+    >
+      {btn.text}
+    </Button>
   ));
 
   return (
