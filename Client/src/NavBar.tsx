@@ -1,27 +1,37 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import AddContact from "./Custome/components/AddContact";
-import { Contact } from "lucide-react";
 import ProfileDetails from "./Custome/components/ProfileDetails";
 import { FiMenu } from "react-icons/fi";
 import { MdClose } from "react-icons/md";
 import { cn } from "@/lib/utils";
 import { Button } from "./components/ui/button";
+import { Contact } from "lucide-react";
 
 interface NavBarProps {
   onAddContact: (contact: {
+    _id: string;
     name: string;
     email: string;
     description: string;
     number: string;
   }) => void;
+  isModalOpen: boolean;
+  setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  selectedContact: contact | null;
+  handleFormSubmit: (formData: contact) => void;
 }
 
 const ProjectsRoutes = {
   Home: "/home",
 };
-
-const NavBar = ({ onAddContact }: NavBarProps) => {
+const NavBar = ({
+  onAddContact,
+  isModalOpen,
+  setIsModalOpen,
+  selectedContact,
+  handleFormSubmit,
+}: NavBarProps) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const toggleMobileMenu = () => {
@@ -52,12 +62,24 @@ const NavBar = ({ onAddContact }: NavBarProps) => {
 
       <div className="hidden md:flex justify-between items-center gap-5">
         <ul className="flex justify-between gap-3 items-center">{pages}</ul>
-        <AddContact onAddContact={onAddContact} />
+        <AddContact
+          isOpen={isModalOpen}
+          setIsOpen={setIsModalOpen}
+          initialData={selectedContact ?? undefined}
+          onSubmit={handleFormSubmit}
+        />
+
         <ProfileDetails />
       </div>
 
       <div className="md:hidden flex items-center gap-4">
-        <AddContact onAddContact={onAddContact} />{" "}
+        <AddContact
+          isOpen={isModalOpen}
+          setIsOpen={setIsModalOpen}
+          initialData={selectedContact ?? undefined}
+          onSubmit={handleFormSubmit}
+        />
+
         <Button
           onClick={toggleMobileMenu}
           className="p-2 focus:outline-none focus:ring-2 focus:ring-orange rounded-md"

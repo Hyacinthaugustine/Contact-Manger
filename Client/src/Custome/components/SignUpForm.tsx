@@ -17,7 +17,7 @@ const SignUpForm = ({ className, ...props }: React.ComponentProps<"form">) => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     axios
-      .post("http://localhost:2003/users", { name, email, password })
+      .post("http://localhost:2020/users", { name, email, password })
       .then((result) => {
         console.log(result);
         navigate("/home");
