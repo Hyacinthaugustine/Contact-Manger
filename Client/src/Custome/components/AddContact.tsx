@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -14,23 +14,38 @@ import InputError from "./InputError";
 import axios from "axios";
 
 interface AddContactProps {
-  onAddContact: (contact: {
+  initialData?: {
     name: string;
     email: string;
     description: string;
     number: string;
+    _id?: string;
+  };
+  onSubmit: (contact: {
+    name: string;
+    email: string;
+    description: string;
+    number: string;
+    _id?: string;
   }) => void;
+  isOpen: boolean;
+  setIsOpen: (value: boolean) => void;
 }
 
-const AddContact = ({ onAddContact }: AddContactProps) => {
+const AddContact = ({
+  initialData,
+  onSubmit,
+  isOpen,
+  setIsOpen,
+}: AddContactProps) => {
   const [contact, setContact] = useState({
-    name: "",
-    email: "",
-    description: "",
-    number: "",
+    name: initialData?.name || "",
+    email: initialData?.email || "",
+    description: initialData?.description || "",
+    number: initialData?.number || "",
+    _id: initialData?._id,
   });
 
-  const [isOpen, setIsOpen] = useState(false);
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
 
   const handleChange = (
@@ -48,6 +63,12 @@ const AddContact = ({ onAddContact }: AddContactProps) => {
       [name]: "",
     }));
   };
+
+  useEffect(() => {
+    if (initialData) {
+      setContact(initialData);
+    }
+  }, [initialData]);
 
   const validateError = () => {
     const newErrors: { [key: string]: string } = {};
@@ -92,23 +113,17 @@ const AddContact = ({ onAddContact }: AddContactProps) => {
       description: cleanDescription,
     };
 
-    onAddContact(cleanedContact);
-
     axios
-      .post("http://localhost:2003/contact-details", cleanedContact)
+      .post("http://localhost:2020/contacts", cleanedContact)
       .then((result) => {
         console.log(result);
       })
       .catch((err) => console.log(err));
 
-    setContact({
-      name: "",
-      number: "",
-      email: "",
-      description: "",
-    });
-    setErrors({});
+    onSubmit(cleanedContact);
     setIsOpen(false);
+    setContact({ name: "", number: "", email: "", description: "", _id: "" });
+    setErrors({});
   };
 
   return (
