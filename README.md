@@ -1,7 +1,3 @@
-Here’s a well-structured, professional, and standard GitHub `README.md` file for your **Contact Manager App**:
-
----
-
 ```markdown
 # 📇 Contact Manager App
 
