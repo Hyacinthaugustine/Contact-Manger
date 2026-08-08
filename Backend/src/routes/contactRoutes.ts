@@ -1,29 +1,16 @@
 import { Router, Request, Response } from "express";
+import getContacts from "../controllers/contactController/getContacts";
+import postContacts from "../controllers/contactController/postContact";
+import updateContact from "../controllers/contactController/putContact";
+import getSingleConatactById from "../controllers/contactController/getContact";
+import deleteContact from "../controllers/contactController/deleteContact";
 
 const ContactRouter = Router();
 
-ContactRouter.get("/", (req: Request, res: Response) => {
-  res.status(200).json({ message: "hollosssss" });
-});
-
-ContactRouter.post("/", (req: Request, res: Response) => {
-  res.status(200).json({ message: "Create a new contact" });
-});
-
-ContactRouter.put("/:id", (req: Request, res: Response) => {
-  res.status(200).json({ message: `Contact with id ${req.params.id} updated` });
-});
-
-ContactRouter.get("/:id", (req: Request, res: Response) => {
-  res
-    .status(200)
-    .json({ message: "this method id to get a single contact by it id" });
-});
-
-ContactRouter.delete("/:id", (req: Request, res: Response) => {
-  res
-    .status(200)
-    .json({ message: `contact Deleted for this id = ${req.params.id}` });
-});
+ContactRouter.get("/", getContacts);
+ContactRouter.post("/", postContacts);
+ContactRouter.put("/:id", updateContact);
+ContactRouter.get("/:id", getSingleConatactById);
+ContactRouter.delete("/:id", deleteContact);
 
 export default ContactRouter;
