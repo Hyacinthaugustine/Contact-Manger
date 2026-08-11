@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { contactTypes } from "../../types";
 import asyncErrorHandler from "../../middleware/asyncErrorHandler";
+import Contact from "../../models/contactModel";
 
 const postContacts = asyncErrorHandler(async (req: Request, res: Response) => {
   console.log("Request body:", req.body);
@@ -13,9 +14,14 @@ const postContacts = asyncErrorHandler(async (req: Request, res: Response) => {
     throw new Error("All fields are required.");
   }
 
-  res.status(201).json({
-    message: "New Contact added",
+  const contact = await Contact.create({
+    name,
+    email,
+    phoneNumber,
+    description,
   });
+
+  res.status(201).json(contact);
 });
 
 export default postContacts;

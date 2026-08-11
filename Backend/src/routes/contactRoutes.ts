@@ -1,4 +1,4 @@
-import { Router, Request, Response } from "express";
+import { Router } from "express";
 import getContacts from "../controllers/contactController/getContacts";
 import postContacts from "../controllers/contactController/postContact";
 import updateContact from "../controllers/contactController/putContact";
