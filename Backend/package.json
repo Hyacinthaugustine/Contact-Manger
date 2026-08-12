@@ -15,15 +15,19 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^6.0.0",
     "cors": "^2.8.5",
     "dotenv": "^16.6.1",
     "ejs": "^3.1.10",
     "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.3",
     "mongodb": "^6.17.0",
     "mongoose": "^8.15.1"
   },
   "devDependencies": {
+    "@types/bcrypt": "^6.0.0",
     "@types/express": "^5.0.3",
+    "@types/jsonwebtoken": "^9.0.10",
     "@types/node": "^22.15.30",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.8.3"
