@@ -4,3 +4,9 @@ export interface contactTypes {
   email: string;
   description?: string;
 }
+
+export interface userSignInDetails {
+  userName: string;
+  email: string;
+  password: string;
+}

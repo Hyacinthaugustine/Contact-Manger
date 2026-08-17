@@ -14,11 +14,17 @@ const postContacts = asyncErrorHandler(async (req: Request, res: Response) => {
     throw new Error("All fields are required.");
   }
 
+  if (!(req as any).user?.id) {
+    res.status(401);
+    throw new Error("User not authenticated");
+  }
+
   const contact = await Contact.create({
     name,
     email,
     phoneNumber,
     description,
+    user_id: (req as any).user.id,
   });
 
   res.status(201).json(contact);
